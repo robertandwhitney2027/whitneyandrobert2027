@@ -1,0 +1,1624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#FBF7F0" />
+<title>W &amp; R — A Wedding Invitation · 婚礼邀请</title>
+<meta name="description" content="Bilingual wedding RSVP — Bali ceremony 17 April 2027 · Sydney celebration 1 May 2027." />
+<style>
+/* =========================================================
+   Design: "Bali Watercolor Manuscript"
+   - Ivory paper + dusty blush + emerald botanical + antique gold
+   - System-font stacks only (no Google Fonts / no blocked CDNs)
+   - Single self-contained file, works fully offline after first load
+   ========================================================= */
+
+:root{
+  --ivory:#FBF7F0;
+  --ivory-2:#F3ECDF;
+  --paper:#FFFDF8;
+  --blush:#E8C9C1;
+  --blush-2:#F2DBD4;
+  --emerald:#2F4A3A;
+  --emerald-2:#436A53;
+  --gold:#B08D57;
+  --gold-2:#C9A86A;
+  --ink:#3A2E26;
+  --ink-soft:#6A5A4E;
+  --error:#8A3B2E;
+  --ok:#3F6A4E;
+
+  --serif-display:"Didot","Bodoni 72","Bodoni MT","Source Han Serif TC","Noto Serif TC","Songti TC","PMingLiU","SimSun",serif;
+  --serif-body:"Iowan Old Style","Palatino Linotype","Palatino","Source Han Serif TC","Noto Serif TC","Songti TC","PMingLiU","SimSun",serif;
+  --serif-cjk:"Source Han Serif TC","Noto Serif TC","Songti TC","PMingLiU","Microsoft JhengHei","SimSun",serif;
+
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:18px;
+
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+
+  --shadow-soft:0 1px 2px rgba(58,46,38,.04), 0 10px 30px -12px rgba(58,46,38,.18);
+  --shadow-card:0 1px 0 rgba(176,141,87,.18), 0 30px 60px -30px rgba(58,46,38,.25);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif-body);
+  color:var(--ink);
+  background:var(--ivory);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  font-size:17px;
+  min-height:100vh;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(232,201,193,.35), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(176,141,87,.12), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(47,74,58,.06), transparent 60%);
+  background-attachment:fixed;
+}
+html[lang="zh-Hans"] body{ font-family:var(--serif-cjk); }
+
+/* subtle paper grain via SVG noise data-uri */
+body::before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.23 0 0 0 0 0.18 0 0 0 0 0.15 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:.55;
+  mix-blend-mode:multiply;
+}
+
+a{color:var(--emerald);text-decoration:none;border-bottom:1px solid rgba(47,74,58,.25)}
+a:hover{color:var(--gold)}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:30;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 22px;
+  background:linear-gradient(to bottom, rgba(251,247,240,.92), rgba(251,247,240,.7));
+  backdrop-filter:saturate(120%) blur(8px);
+  -webkit-backdrop-filter:saturate(120%) blur(8px);
+  border-bottom:1px solid rgba(176,141,87,.18);
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--serif-display);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:13px;
+  color:var(--emerald);
+}
+.brand .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 3px rgba(176,141,87,.18);
+}
+.lang-toggle{
+  display:inline-flex; align-items:center;
+  background:var(--paper);
+  border:1px solid rgba(176,141,87,.35);
+  border-radius:999px;
+  padding:4px;
+  box-shadow:var(--shadow-soft);
+}
+.lang-toggle button{
+  font:inherit;
+  font-family:var(--serif-display);
+  letter-spacing:.14em;
+  font-size:12px;
+  text-transform:uppercase;
+  border:0; background:transparent; color:var(--ink-soft);
+  padding:6px 14px; border-radius:999px;
+  cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out);
+}
+.lang-toggle button.active{
+  background:var(--emerald);
+  color:var(--ivory);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.lang-toggle button:active{ transform:scale(0.97); }
+
+/* ---------- Layout ---------- */
+.wrap{
+  position:relative; z-index:1;
+  max-width:1180px; margin:0 auto;
+  padding:36px 22px 80px;
+}
+.book{
+  display:grid; gap:36px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 980px){
+  .book{ grid-template-columns: 0.95fr 1.05fr; gap:56px; align-items:start; }
+}
+
+/* ---------- Hero / left page ---------- */
+.hero{
+  position:relative;
+  padding:28px 8px 0;
+}
+.hero-eyebrow{
+  font-family:var(--serif-display);
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  font-size:12px;
+  color:var(--gold);
+}
+.hero-names{
+  font-family:var(--serif-display);
+  font-weight:400;
+  font-size:clamp(48px, 9vw, 96px);
+  line-height:1;
+  color:var(--emerald);
+  margin:18px 0 10px;
+  letter-spacing:.01em;
+}
+.hero-names .amp{
+  font-style:italic;
+  color:var(--gold);
+  padding:0 .15em;
+}
+.hero-sub{
+  font-family:var(--serif-body);
+  font-style:italic;
+  font-size:18px;
+  color:var(--ink-soft);
+  margin:0 0 22px;
+}
+.hero-divider{
+  display:flex; align-items:center; gap:14px;
+  color:var(--gold);
+  margin:18px 0 22px;
+}
+.hero-divider .line{
+  flex:1; height:1px; background:linear-gradient(to right, transparent, var(--gold-2), transparent);
+}
+.hero-card{
+  background:var(--paper);
+  border:1px solid rgba(176,141,87,.25);
+  border-radius:var(--radius-lg);
+  padding:22px 22px 18px;
+  box-shadow:var(--shadow-card);
+  position:relative;
+}
+.hero-card h3{
+  font-family:var(--serif-display);
+  font-weight:400;
+  margin:0 0 6px;
+  font-size:20px;
+  letter-spacing:.04em;
+  color:var(--emerald);
+}
+.hero-card p{ margin:0; color:var(--ink-soft); font-size:15px; }
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+.cd{
+  text-align:center;
+  padding:12px 6px;
+  border:1px solid rgba(176,141,87,.25);
+  background:linear-gradient(180deg, var(--ivory-2), var(--paper));
+  border-radius:var(--radius-md);
+}
+.cd .num{
+  font-family:var(--serif-display);
+  font-size:28px;
+  color:var(--emerald);
+  line-height:1;
+}
+.cd .lbl{
+  display:block;
+  margin-top:6px;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ---------- Right page / content card ---------- */
+.page{
+  background:var(--paper);
+  border:1px solid rgba(176,141,87,.25);
+  border-radius:var(--radius-lg);
+  padding:28px 26px 26px;
+  box-shadow:var(--shadow-card);
+  position:relative;
+  min-height:520px;
+}
+.page::before, .page::after{
+  content:""; position:absolute; width:78px; height:78px; pointer-events:none;
+  background-repeat:no-repeat; background-size:contain; opacity:.85;
+}
+.page::before{
+  top:-6px; left:-6px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%232F4A3A' stroke-width='1.2' stroke-linecap='round'><path d='M8 78 C 20 60, 30 50, 50 42 C 36 50, 28 60, 22 74'/><path d='M50 42 C 60 30, 70 22, 88 16'/><path d='M30 56 q -6 -8 -12 -6'/><path d='M40 50 q -6 -10 -14 -10'/><path d='M55 38 q 8 -6 14 -2'/><path d='M65 32 q 8 -4 14 0'/><circle cx='50' cy='42' r='1.6' fill='%23B08D57' stroke='none'/></svg>");
+}
+.page::after{
+  bottom:-6px; right:-6px; transform:rotate(180deg);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%232F4A3A' stroke-width='1.2' stroke-linecap='round'><path d='M8 78 C 20 60, 30 50, 50 42 C 36 50, 28 60, 22 74'/><path d='M50 42 C 60 30, 70 22, 88 16'/><path d='M30 56 q -6 -8 -12 -6'/><path d='M40 50 q -6 -10 -14 -10'/><path d='M55 38 q 8 -6 14 -2'/><path d='M65 32 q 8 -4 14 0'/><circle cx='50' cy='42' r='1.6' fill='%23B08D57' stroke='none'/></svg>");
+}
+
+.page-num{
+  font-family:var(--serif-display);
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-size:11px;
+  color:var(--gold);
+}
+.page-title{
+  font-family:var(--serif-display);
+  font-weight:400;
+  font-size:30px;
+  line-height:1.15;
+  color:var(--emerald);
+  margin:6px 0 4px;
+}
+.page-lede{
+  color:var(--ink-soft);
+  font-style:italic;
+  margin:0 0 18px;
+}
+
+/* steps indicator */
+.steps{
+  display:flex; align-items:center; gap:8px; margin:6px 0 18px;
+}
+.steps .step{
+  flex:1; height:2px; background:rgba(176,141,87,.25); border-radius:2px; overflow:hidden;
+  position:relative;
+}
+.steps .step.active::after{
+  content:""; position:absolute; inset:0; background:linear-gradient(to right,var(--gold),var(--emerald));
+}
+.steps .step.done{ background:var(--emerald); }
+
+/* form */
+form{ display:flex; flex-direction:column; gap:14px; }
+.field{ display:flex; flex-direction:column; gap:6px; }
+.field label{
+  font-family:var(--serif-display);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:11px;
+  color:var(--ink-soft);
+}
+.field input, .field textarea, .field select{
+  font:inherit;
+  font-family:var(--serif-body);
+  color:var(--ink);
+  background:transparent;
+  border:0; border-bottom:1px solid rgba(58,46,38,.25);
+  padding:8px 2px 10px;
+  outline:none;
+  transition:border-color .2s var(--ease-out), background-color .2s var(--ease-out);
+  border-radius:0;
+}
+html[lang="zh-Hans"] .field input,
+html[lang="zh-Hans"] .field textarea,
+html[lang="zh-Hans"] .field select{ font-family:var(--serif-cjk); }
+.field input:focus, .field textarea:focus, .field select:focus{
+  border-color:var(--emerald);
+}
+.field textarea{
+  min-height:120px; resize:vertical;
+  padding:10px 10px 12px;
+  border:1px solid rgba(58,46,38,.18);
+  border-radius:var(--radius-md);
+  background:rgba(251,247,240,.6);
+}
+.field .help{ font-size:13px; color:var(--ink-soft); font-style:italic; }
+.field .err{
+  font-size:13px; color:var(--error); font-style:italic;
+  min-height:1.2em;
+  transition:opacity .2s var(--ease-out), transform .2s var(--ease-out);
+}
+.field .err:empty{ opacity:0; transform:translateY(-2px); }
+.field.invalid input, .field.invalid textarea, .field.invalid select{
+  border-color:var(--error);
+}
+
+.row{ display:grid; gap:14px; grid-template-columns:1fr; }
+@media (min-width:560px){ .row.two{ grid-template-columns:1fr 1fr; } }
+
+/* guest list dynamic block */
+.guest-list{
+  display:flex; flex-direction:column; gap:10px;
+  background:linear-gradient(180deg, rgba(232,201,193,.18), transparent);
+  border:1px dashed rgba(176,141,87,.45);
+  padding:14px; border-radius:var(--radius-md);
+}
+.guest-list .gl-title{
+  font-family:var(--serif-display);
+  letter-spacing:.2em; text-transform:uppercase;
+  font-size:11px; color:var(--gold);
+}
+.guest-row{ display:flex; gap:10px; align-items:center; }
+.guest-row .idx{
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--ivory-2); color:var(--emerald);
+  font-family:var(--serif-display); font-size:13px;
+  border:1px solid rgba(176,141,87,.3);
+  flex:0 0 auto;
+}
+.guest-row input{
+  flex:1; border-bottom:1px solid rgba(58,46,38,.18); padding:6px 2px 8px;
+}
+
+/* event option cards */
+.events{ display:flex; flex-direction:column; gap:14px; }
+.event{
+  position:relative;
+  border:1px solid rgba(176,141,87,.3);
+  border-radius:var(--radius-lg);
+  padding:18px 18px 16px;
+  background:
+    linear-gradient(180deg, rgba(232,201,193,.12), rgba(255,253,248,.9));
+  cursor:pointer;
+  transition:transform .22s var(--ease-out), box-shadow .22s var(--ease-out), border-color .22s var(--ease-out), background-color .22s var(--ease-out);
+}
+.event:hover{ transform:translateY(-1px); box-shadow:var(--shadow-soft); }
+.event:active{ transform:scale(.995); }
+.event input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
+.event .ev-tag{
+  font-family:var(--serif-display);
+  letter-spacing:.28em; text-transform:uppercase;
+  font-size:11px; color:var(--gold);
+}
+.event h4{
+  font-family:var(--serif-display); font-weight:400;
+  margin:6px 0 2px; font-size:22px; color:var(--emerald);
+}
+.event .ev-meta{ color:var(--ink-soft); font-size:14px; font-style:italic; }
+.event .ev-desc{ font-size:14px; color:var(--ink); margin-top:8px; }
+.event.selected{
+  border-color:var(--emerald);
+  background:linear-gradient(180deg, rgba(67,106,83,.10), rgba(255,253,248,.95));
+  box-shadow:0 0 0 1px rgba(47,74,58,.35), var(--shadow-soft);
+}
+.event .checkmark{
+  position:absolute; top:14px; right:14px;
+  width:22px; height:22px; border-radius:50%;
+  border:1px solid rgba(176,141,87,.5);
+  display:flex; align-items:center; justify-content:center;
+  background:var(--paper);
+  color:var(--emerald);
+  transition:background-color .2s var(--ease-out), border-color .2s var(--ease-out), transform .2s var(--ease-out);
+}
+.event.selected .checkmark{
+  background:var(--emerald); color:var(--ivory); border-color:var(--emerald); transform:scale(1.05);
+}
+.event .checkmark svg{ width:12px; height:12px; }
+
+/* deadline notice */
+.notice{
+  margin-top:14px;
+  padding:14px 16px;
+  border:1px solid rgba(176,141,87,.35);
+  background:linear-gradient(180deg, rgba(232,201,193,.20), rgba(255,253,248,.85));
+  border-radius:var(--radius-md);
+  color:var(--ink);
+}
+.notice strong{ color:var(--emerald); }
+.notice .deadline{
+  font-family:var(--serif-display);
+  letter-spacing:.18em; text-transform:uppercase;
+  font-size:12px; color:var(--gold);
+  display:block; margin-bottom:6px;
+}
+
+/* buttons */
+.btn-row{
+  display:flex; gap:10px; justify-content:space-between; align-items:center;
+  margin-top:18px;
+}
+button.btn{
+  font:inherit;
+  font-family:var(--serif-display);
+  letter-spacing:.22em; text-transform:uppercase;
+  font-size:12px;
+  padding:12px 22px;
+  border-radius:999px;
+  border:1px solid var(--emerald);
+  background:var(--emerald);
+  color:var(--ivory);
+  cursor:pointer;
+  transition:transform .16s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out), box-shadow .2s var(--ease-out);
+  box-shadow:0 8px 20px -10px rgba(47,74,58,.6);
+}
+button.btn:hover{ background:var(--ink); border-color:var(--ink); }
+button.btn:active{ transform:scale(.97); }
+button.btn.ghost{
+  background:transparent; color:var(--emerald);
+  border:1px solid rgba(47,74,58,.35);
+  box-shadow:none;
+}
+button.btn.ghost:hover{ background:rgba(47,74,58,.06); color:var(--ink); }
+button.btn.gold{
+  background:var(--gold); border-color:var(--gold); color:var(--ivory);
+  box-shadow:0 8px 20px -10px rgba(176,141,87,.6);
+}
+button.btn.gold:hover{ background:#9a784a; border-color:#9a784a; }
+
+/* page transitions */
+.page-step{
+  display:none;
+  animation:fadeIn .35s var(--ease-out) both;
+}
+.page-step.active{ display:block; }
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* confirmation */
+.confirm{
+  text-align:center; padding:8px 4px;
+}
+.confirm .seal{
+  width:96px; height:96px; margin:6px auto 14px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #cda06f, #8a6638 70%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff;
+  font-family:var(--serif-display); font-style:italic; font-size:34px;
+  box-shadow:0 12px 24px -10px rgba(138,102,56,.7), inset 0 0 0 4px rgba(255,255,255,.18);
+  letter-spacing:.04em;
+}
+.confirm h2{
+  font-family:var(--serif-display); font-weight:400; font-size:34px;
+  color:var(--emerald); margin:6px 0;
+}
+.confirm p{ color:var(--ink-soft); font-size:16px; }
+.confirm .kind{
+  margin:16px auto 0; max-width:520px;
+  padding:14px 16px;
+  background:linear-gradient(180deg, rgba(232,201,193,.18), rgba(255,253,248,.85));
+  border:1px solid rgba(176,141,87,.3);
+  border-radius:var(--radius-md);
+  font-style:italic;
+}
+
+/* footer */
+.footer{
+  text-align:center; padding:36px 0 8px;
+  color:var(--ink-soft); font-size:13px;
+  letter-spacing:.06em;
+}
+.footer .monogram{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:50%;
+  border:1px solid rgba(176,141,87,.45);
+  background:var(--paper);
+  color:var(--emerald);
+  font-family:var(--serif-display); font-style:italic; font-size:18px;
+  cursor:default;
+  user-select:none;
+  margin:6px auto 10px;
+  transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
+}
+.footer .monogram:hover{ transform:translateY(-1px); box-shadow:var(--shadow-soft); }
+
+/* ---------- Modal (admin) ---------- */
+.modal-back{
+  position:fixed; inset:0; z-index:50;
+  background:rgba(58,46,38,.45);
+  display:none; align-items:center; justify-content:center;
+  padding:18px;
+  animation:fadeIn .25s var(--ease-out);
+}
+.modal-back.open{ display:flex; }
+.modal{
+  width:100%; max-width:1080px; max-height:92vh; overflow:auto;
+  background:var(--paper);
+  border-radius:var(--radius-lg);
+  border:1px solid rgba(176,141,87,.35);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.4);
+  padding:22px;
+  animation:popIn .28s var(--ease-out);
+}
+@keyframes popIn{
+  from{ opacity:0; transform:scale(.96) translateY(6px); }
+  to{ opacity:1; transform:scale(1) translateY(0); }
+}
+.modal-head{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  margin-bottom:8px;
+}
+.modal-head h3{
+  font-family:var(--serif-display); font-weight:400; font-size:22px;
+  color:var(--emerald); margin:0;
+}
+.modal-close{
+  background:transparent; border:1px solid rgba(58,46,38,.2); border-radius:999px;
+  padding:6px 12px; cursor:pointer; font:inherit; font-size:13px; color:var(--ink-soft);
+}
+.modal-close:hover{ color:var(--ink); border-color:var(--ink); }
+
+.admin-grid{
+  display:grid; gap:12px; grid-template-columns:repeat(2,1fr);
+}
+@media (min-width:760px){ .admin-grid{ grid-template-columns:repeat(4,1fr); } }
+.stat{
+  padding:14px; border:1px solid rgba(176,141,87,.25); border-radius:var(--radius-md);
+  background:linear-gradient(180deg, var(--ivory-2), var(--paper));
+}
+.stat .stat-label{
+  font-family:var(--serif-display); letter-spacing:.22em; text-transform:uppercase;
+  font-size:10px; color:var(--gold);
+}
+.stat .stat-value{
+  font-family:var(--serif-display); font-size:28px; color:var(--emerald); margin-top:6px;
+}
+.stat .stat-sub{ font-size:12px; color:var(--ink-soft); margin-top:2px; }
+
+.admin-section{
+  margin-top:20px;
+}
+.admin-section h4{
+  font-family:var(--serif-display); font-weight:400; color:var(--emerald);
+  font-size:18px; margin:0 0 10px;
+  border-bottom:1px solid rgba(176,141,87,.25); padding-bottom:6px;
+}
+table.adm{
+  width:100%; border-collapse:collapse; font-size:13px;
+}
+table.adm th, table.adm td{
+  text-align:left; padding:8px 8px; border-bottom:1px solid rgba(176,141,87,.18);
+  vertical-align:top;
+}
+table.adm th{
+  font-family:var(--serif-display); letter-spacing:.16em; text-transform:uppercase;
+  font-size:11px; color:var(--gold); font-weight:400;
+}
+.tag{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; }
+.tag.bali{ background:rgba(232,201,193,.5); color:#7a3b2e; }
+.tag.sydney{ background:rgba(67,106,83,.18); color:var(--emerald); }
+.tag.decline{ background:rgba(176,141,87,.18); color:var(--gold); }
+
+.kind-list{ display:grid; gap:10px; }
+.kind-card{
+  padding:12px 14px;
+  background:linear-gradient(180deg, rgba(232,201,193,.18), rgba(255,253,248,.85));
+  border:1px solid rgba(176,141,87,.25); border-radius:var(--radius-md);
+}
+.kind-card .who{
+  font-family:var(--serif-display); letter-spacing:.16em; text-transform:uppercase;
+  font-size:11px; color:var(--gold);
+}
+.kind-card .msg{ font-style:italic; color:var(--ink); margin-top:4px; }
+
+.admin-tools{ display:flex; gap:8px; flex-wrap:wrap; }
+button.tool{
+  font:inherit; font-family:var(--serif-display);
+  letter-spacing:.2em; text-transform:uppercase; font-size:11px;
+  padding:9px 14px; border-radius:999px;
+  border:1px solid var(--emerald); background:var(--emerald); color:var(--ivory);
+  cursor:pointer;
+}
+button.tool.ghost{ background:transparent; color:var(--emerald); }
+button.tool.danger{ border-color:var(--error); background:var(--error); }
+button.tool:active{ transform:scale(.97); }
+
+.pwd-form{ display:flex; flex-direction:column; gap:10px; }
+.pwd-form input{
+  font:inherit; padding:12px 14px; border-radius:var(--radius-md);
+  border:1px solid rgba(58,46,38,.25); background:var(--paper);
+}
+.pwd-form .err{ color:var(--error); font-style:italic; font-size:13px; min-height:1.2em; }
+
+/* hidden helper */
+[hidden]{ display:none !important; }
+
+/* small screens tightening */
+@media (max-width:520px){
+  .wrap{ padding:20px 14px 60px; }
+  .page{ padding:22px 18px 20px; }
+  .hero-names{ font-size:56px; }
+  .countdown .num{ font-size:22px; }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="dot" aria-hidden="true"></span>
+    <span data-i18n="brand">A &amp; M · A Wedding Invitation</span>
+  </div>
+  <div class="lang-toggle" role="tablist" aria-label="Language toggle">
+    <button id="lang-en" type="button" class="active" role="tab" aria-selected="true">EN</button>
+    <button id="lang-zh" type="button" role="tab" aria-selected="false">中文</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="book">
+
+    <!-- ============ LEFT — HERO ============ -->
+    <aside class="hero" aria-label="Invitation cover">
+      <div class="hero-eyebrow" data-i18n="heroEyebrow">Together with their families</div>
+      <h1 class="hero-names">
+        <span data-i18n="brideName">Whitney</span>
+        <span class="amp">&amp;</span>
+        <span data-i18n="groomName">Robert</span>
+      </h1>
+      <p class="hero-sub" data-i18n="heroSub">request the joy of your company</p>
+
+      <div class="hero-divider" aria-hidden="true">
+        <span class="line"></span>
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M2 7 q 6 -8 12 0 q 6 8 12 0"/>
+          <circle cx="14" cy="7" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="line"></span>
+      </div>
+
+      <div class="hero-card">
+        <h3 data-i18n="rsvpByTitle">Kindly respond by</h3>
+        <p data-i18n="rsvpByDate">Thursday, 1st October 2026</p>
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div class="cd"><div class="num" id="cd-days">--</div><span class="lbl" data-i18n="cdDays">Days</span></div>
+          <div class="cd"><div class="num" id="cd-hours">--</div><span class="lbl" data-i18n="cdHours">Hours</span></div>
+          <div class="cd"><div class="num" id="cd-mins">--</div><span class="lbl" data-i18n="cdMins">Minutes</span></div>
+          <div class="cd"><div class="num" id="cd-secs">--</div><span class="lbl" data-i18n="cdSecs">Seconds</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card" style="margin-top:14px;">
+        <h3 data-i18n="aboutTitle">A note from us</h3>
+        <p data-i18n="aboutBody">We will gather first in the green hills of Bali, and again over a warm dinner in Sydney. Wherever you can join, your presence will mean the world to us.</p>
+      </div>
+    </aside>
+
+    <!-- ============ RIGHT — PAGES ============ -->
+    <section class="page" aria-live="polite">
+      <div class="steps" aria-hidden="true">
+        <div class="step active" id="step-1"></div>
+        <div class="step" id="step-2"></div>
+        <div class="step" id="step-3"></div>
+      </div>
+
+      <!-- Step 1: Guest details -->
+      <div class="page-step active" id="step-page-1">
+        <div class="page-num" data-i18n="step1Num">01 — Your details</div>
+        <h2 class="page-title" data-i18n="step1Title">Let us know who is coming</h2>
+        <p class="page-lede" data-i18n="step1Lede">A few small details so we can prepare a place at the table for you.</p>
+
+        <form id="form-1" novalidate>
+          <div class="row two">
+            <div class="field" data-name="fullName">
+              <label for="fullName" data-i18n="lblName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" />
+              <div class="err" data-err></div>
+            </div>
+            <div class="field" data-name="mobile">
+              <label for="mobile" data-i18n="lblMobile">Mobile number</label>
+              <input id="mobile" name="mobile" type="tel" autocomplete="tel" inputmode="tel" />
+              <div class="err" data-err></div>
+            </div>
+          </div>
+
+          <div class="field" data-name="email">
+            <label for="email" data-i18n="lblEmail">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" />
+            <div class="err" data-err></div>
+          </div>
+
+          <div class="field" data-name="guestCount">
+            <label for="guestCount" data-i18n="lblCount">Total guests attending (including yourself)</label>
+            <input id="guestCount" name="guestCount" type="number" min="1" max="10" step="1" inputmode="numeric" value="1" />
+            <div class="help" data-i18n="helpCount">If you are bringing companions, please list their names below.</div>
+            <div class="err" data-err></div>
+          </div>
+
+          <div class="guest-list" id="guestList" hidden>
+            <div class="gl-title" data-i18n="addlGuests">Additional guests</div>
+            <div id="guestRows"></div>
+          </div>
+
+          <div class="btn-row">
+            <span></span>
+            <button class="btn" type="submit" data-i18n="btnContinue">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Event selection -->
+      <div class="page-step" id="step-page-2">
+        <div class="page-num" data-i18n="step2Num">02 — Choose your event</div>
+        <h2 class="page-title" data-i18n="step2Title">Where will we celebrate together?</h2>
+        <p class="page-lede" data-i18n="step2Lede">Two gatherings, one love story. Choose the one you can join — or share a few kind words if you cannot.</p>
+
+        <form id="form-2" novalidate>
+          <div class="events" role="radiogroup" aria-label="Event choice">
+
+            <label class="event" data-choice="bali">
+              <input type="radio" name="venue" value="bali" />
+              <span class="checkmark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div class="ev-tag" data-i18n="optA">Option A · Wedding Ceremony</div>
+              <h4 data-i18n="evBaliTitle">Bali, Indonesia</h4>
+              <div class="ev-meta" data-i18n="evBaliMeta">Saturday, 17th April 2027</div>
+              <div class="ev-desc" data-i18n="evBaliDesc">An intimate ceremony among the rice terraces, followed by a sunset reception by the sea.</div>
+            </label>
+
+            <label class="event" data-choice="sydney">
+              <input type="radio" name="venue" value="sydney" />
+              <span class="checkmark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div class="ev-tag" data-i18n="optB">Option B · Celebration Dinner</div>
+              <h4 data-i18n="evSydTitle">Royal Palace Seafood Restaurant, Sydney</h4>
+              <div class="ev-meta" data-i18n="evSydMeta">Saturday, 1st May 2027</div>
+              <div class="ev-desc" data-i18n="evSydDesc">A warm Cantonese banquet with family and friends to celebrate our marriage.</div>
+            </label>
+
+            <label class="event" data-choice="decline">
+              <input type="radio" name="venue" value="decline" />
+              <span class="checkmark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div class="ev-tag" data-i18n="optC">Option C · Unable to attend</div>
+              <h4 data-i18n="evDeclineTitle">Send us your love from afar</h4>
+              <div class="ev-meta" data-i18n="evDeclineMeta">We will hold you in our hearts on the day</div>
+              <div class="ev-desc" data-i18n="evDeclineDesc">If you cannot join us, we would be honoured to read a message, a wish, or any words of wisdom you'd like to share.</div>
+            </label>
+
+          </div>
+          <div class="err" data-err-venue style="font-size:13px;color:var(--error);font-style:italic;margin-top:8px;min-height:1.2em;"></div>
+
+          <div class="field" id="declineMsgField" hidden style="margin-top:14px;">
+            <label for="declineMsg" data-i18n="lblWish">A message for the couple</label>
+            <textarea id="declineMsg" name="declineMsg" maxlength="1000" placeholder=""></textarea>
+            <div class="help" data-i18n="helpWish">Optional — but if you have time, your words will be treasured for years to come.</div>
+          </div>
+
+          <div class="notice">
+            <span class="deadline" data-i18n="deadlineLabel">RSVP Deadline · 1st October 2026</span>
+            <span data-i18n="deadlineBody">We kindly ask you to reply <strong>within one month of receiving this invitation</strong>. As our wedding is international, this helps us with venue confirmations, travel planning and visa arrangements for our loved ones. Thank you for your care.</span>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn ghost" type="button" id="back-1" data-i18n="btnBack">Back</button>
+            <button class="btn gold" type="submit" data-i18n="btnSubmit">Send RSVP</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3: Confirmation -->
+      <div class="page-step" id="step-page-3">
+        <div class="confirm">
+          <div class="seal" aria-hidden="true">W&amp;R</div>
+          <h2 id="thankTitle" data-i18n="thankTitle">Thank you</h2>
+          <p id="thankBody"></p>
+          <div class="kind" id="thankKind" hidden></div>
+          <div class="btn-row" style="justify-content:center; margin-top:22px;">
+            <button class="btn ghost" type="button" id="restart" data-i18n="btnAgain">Submit another RSVP</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="monogram" id="adminTrigger" title="">W&amp;R</div>
+    <div data-i18n="footerLine">With all our love — Whitney &amp; Robert · 2027</div>
+  </footer>
+</main>
+
+<!-- Admin password modal -->
+<div class="modal-back" id="pwdModalBack" role="dialog" aria-modal="true" aria-labelledby="pwdTitle">
+  <div class="modal" style="max-width:420px;">
+    <div class="modal-head">
+      <h3 id="pwdTitle" data-i18n="admPwdTitle">Private dashboard</h3>
+      <button class="modal-close" type="button" id="pwdClose" data-i18n="btnClose">Close</button>
+    </div>
+    <p style="color:var(--ink-soft); font-style:italic; margin-top:0;" data-i18n="admPwdBody">Enter the password to view the RSVP dashboard.</p>
+    <form class="pwd-form" id="pwdForm" autocomplete="off">
+      <input type="password" id="pwdInput" placeholder="Password" autocomplete="off" />
+      <div class="err" id="pwdErr"></div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn" type="submit" data-i18n="btnEnter">Enter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Admin dashboard modal -->
+<div class="modal-back" id="admModalBack" role="dialog" aria-modal="true" aria-labelledby="admTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="admTitle" data-i18n="admTitle">RSVP Dashboard</h3>
+      <div class="admin-tools">
+        <button class="tool ghost" type="button" id="exportCsv" data-i18n="btnExport">Export CSV</button>
+        <button class="tool danger" type="button" id="clearAll" data-i18n="btnClear">Clear all</button>
+        <button class="modal-close" type="button" id="admClose" data-i18n="btnClose">Close</button>
+      </div>
+    </div>
+
+    <div class="admin-grid" id="admStats"></div>
+
+    <div class="admin-section">
+      <h4 data-i18n="admListTitle">All responses</h4>
+      <div style="overflow:auto;">
+        <table class="adm" id="admTable">
+          <thead>
+            <tr>
+              <th data-i18n="thName">Name</th>
+              <th data-i18n="thMobile">Mobile</th>
+              <th data-i18n="thEmail">Email</th>
+              <th data-i18n="thCount">#</th>
+              <th data-i18n="thGuests">Guests</th>
+              <th data-i18n="thVenue">Choice</th>
+              <th data-i18n="thWhen">Submitted</th>
+              <th data-i18n="thLang">Lang</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h4 data-i18n="admKindTitle">Kind words from those who cannot attend</h4>
+      <div class="kind-list" id="admKind"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   i18n dictionary (Traditional Chinese)
+   ========================================================= */
+const I18N = {
+  en: {
+    brand: "W & R · A Wedding Invitation",
+    heroEyebrow: "Together with their families",
+    brideName: "Whitney",
+    groomName: "Robert",
+    heroSub: "request the joy of your company",
+    rsvpByTitle: "Kindly respond by",
+    rsvpByDate: "Thursday, 1st October 2026",
+    cdDays: "Days", cdHours: "Hours", cdMins: "Minutes", cdSecs: "Seconds",
+    aboutTitle: "A note from us",
+    aboutBody: "We will gather first in the green hills of Bali, and again over a warm dinner in Sydney. Wherever you can join, your presence will mean the world to us.",
+
+    step1Num: "01 — Your details",
+    step1Title: "Let us know who is coming",
+    step1Lede: "A few small details so we can prepare a place at the table for you.",
+    lblName: "Full name",
+    lblMobile: "Mobile number",
+    lblEmail: "Email address",
+    lblCount: "Total guests attending (including yourself)",
+    helpCount: "If you are bringing companions, please list their names below.",
+    addlGuests: "Additional guests",
+    btnContinue: "Continue",
+
+    step2Num: "02 — Choose your event",
+    step2Title: "Where will we celebrate together?",
+    step2Lede: "Two gatherings, one love story. Choose the one you can join — or share a few kind words if you cannot.",
+    optA: "Option A · Wedding Ceremony",
+    evBaliTitle: "Bali, Indonesia",
+    evBaliMeta: "Saturday, 17th April 2027",
+    evBaliDesc: "An intimate ceremony among the rice terraces, followed by a sunset reception by the sea.",
+    optB: "Option B · Celebration Dinner",
+    evSydTitle: "Royal Palace Seafood Restaurant, Sydney",
+    evSydMeta: "Saturday, 1st May 2027",
+    evSydDesc: "A warm Cantonese banquet with family and friends to celebrate our marriage.",
+    optC: "Option C · Unable to attend",
+    evDeclineTitle: "Send us your love from afar",
+    evDeclineMeta: "We will hold you in our hearts on the day",
+    evDeclineDesc: "If you cannot join us, we would be honoured to read a message, a wish, or any words of wisdom you'd like to share.",
+    lblWish: "A message for the couple",
+    helpWish: "Optional — but if you have time, your words will be treasured for years to come.",
+    wishPlaceholder: "A wish, a memory, or a few words of wisdom…",
+
+    deadlineLabel: "RSVP Deadline · 1st October 2026",
+    deadlineBody: "We kindly ask you to reply <strong>within one month of receiving this invitation</strong>. As our wedding is international, this helps us with venue confirmations, travel planning and visa arrangements for our loved ones. Thank you for your care.",
+
+    btnBack: "Back",
+    btnSubmit: "Send RSVP",
+    btnAgain: "Submit another RSVP",
+
+    thankTitle: "Thank you",
+    thankBali: (name)=>`Dear ${name}, thank you for your kind reply. We can hardly wait to welcome you in Bali on the 17th of April 2027 — a confirmation with travel notes will follow soon. With all our love.`,
+    thankSydney: (name)=>`Dear ${name}, thank you for your kind reply. We look forward to raising a glass with you in Sydney on the 1st of May 2027. Further details will follow closer to the day. With all our love.`,
+    thankDecline: (name)=>`Dear ${name}, thank you for taking the time to reply. We will miss you on the day, but your kindness and friendship travel with us always. With all our love.`,
+
+    footerLine: "With all our love — Whitney & Robert · 2027",
+
+    // validation
+    errName: "Please tell us your name.",
+    errMobile: "Please enter a valid mobile number.",
+    errEmail: "Please enter a valid email address.",
+    errCount: "Please enter a number between 1 and 10.",
+    errGuestName: "Please enter this guest's name.",
+    errVenue: "Please choose one of the three options.",
+
+    // admin
+    admPwdTitle: "Private dashboard",
+    admPwdBody: "Enter the password to view the RSVP dashboard.",
+    btnEnter: "Enter",
+    btnClose: "Close",
+    admTitle: "RSVP Dashboard",
+    btnExport: "Export CSV",
+    btnClear: "Clear all",
+    admListTitle: "All responses",
+    admKindTitle: "Kind words from those who cannot attend",
+    statTotal: "Total RSVPs",
+    statBali: "Bali attendees",
+    statSydney: "Sydney attendees",
+    statDecline: "Declines",
+    statHeadcount: (n)=>`${n} headcount`,
+    thName: "Name", thMobile: "Mobile", thEmail: "Email", thCount: "#",
+    thGuests: "Guests", thVenue: "Choice", thWhen: "Submitted", thLang: "Lang",
+    tagBali: "Bali", tagSydney: "Sydney", tagDecline: "Decline",
+    pwdWrong: "Incorrect password.",
+    confirmClear: "Delete all RSVP submissions? This cannot be undone.",
+    kindEmpty: "No messages yet."
+  },
+  "zh-Hans": {
+    brand: "W & R · 婚礼邀请",
+    heroEyebrow: "谨偕家人",
+    brideName: "琦琦",
+    groomName: "罗伯特",
+    heroSub: "诚挚邀请您一同见证",
+    rsvpByTitle: "敬请回复于",
+    rsvpByDate: "2026 年 10 月 1 日（周四）前",
+    cdDays: "天", cdHours: "时", cdMins: "分", cdSecs: "秒",
+    aboutTitle: "新人的话",
+    aboutBody: "我们将先于巴厘岛的山林间举行婚礼，再回到悉尼与亲友共享温暖晚宴。无论您能参与哪一场，您的祝福对我们都意义非凡。",
+
+    step1Num: "一 — 您的资料",
+    step1Title: "请告诉我们谁会出席",
+    step1Lede: "几项简单的资讯，让我们为您预留一个位子。",
+    lblName: "姓名全名",
+    lblMobile: "手机号码",
+    lblEmail: "电子邮箱",
+    lblCount: "出席总人数（含本人）",
+    helpCount: "若有同行亲友，请在下方填写他们的姓名。",
+    addlGuests: "同行宾客",
+    btnContinue: "下一步",
+
+    step2Num: "二 — 选择出席场次",
+    step2Title: "您将与我们在何处相聚？",
+    step2Lede: "两场聚会，同一段爱的故事。请选择您能出席的场次，或留下祝福。",
+    optA: "选项 A · 婚礼仪式",
+    evBaliTitle: "印尼 巴厘岛",
+    evBaliMeta: "2027 年 4 月 17 日（周六）",
+    evBaliDesc: "在努沙杜瓦举行的小型婚礼，并于海边举办黄昏宴会。",
+    optB: "选项 B · 庆祝晚宴",
+    evSydTitle: "悉尼 皇庭海鲜舫",
+    evSydMeta: "2027 年 5 月 1 日（周六）",
+    evSydDesc: "与亲朋好友共聚一堂，以温馨粤式晚宴庆祝我们的婚礼。",
+    optC: "选项 C · 无法出席",
+    evDeclineTitle: "请以祝福相伴",
+    evDeclineMeta: "当天我们会在心中惦记着您",
+    evDeclineDesc: "若您无法亲临，欢迎在此留下一段祝福、回忆或人生建议，我们会永远珍藏。",
+    lblWish: "给新人的祝福",
+    helpWish: "非必填，若您愿意，您的字句我们会珍藏多年。",
+    wishPlaceholder: "一段祝福、回忆，或是几句人生建议……",
+
+    deadlineLabel: "回复截止 · 2026 年 10 月 1 日",
+    deadlineBody: "恳请于 <strong>收到邀请后的一个月内</strong> 回复。由于是跨国婚礼，这将有助于我们安排场地、行程，以及为亲友办理签证。感谢您的体谅。",
+
+    btnBack: "返回",
+    btnSubmit: "提交回复",
+    btnAgain: "再填一份回复",
+
+    thankTitle: "谢谢您",
+    thankBali: (name)=>`亲爱的 ${name}，感谢您的回复。我们已迫不及待于 2027 年 4 月 17 日在巴厘岛与您相见，稍后将寄上行程细节。献上我们最深的爱。`,
+    thankSydney: (name)=>`亲爱的 ${name}，感谢您的回复。期待 2027 年 5 月 1 日在悉尼与您举杯同庆，详细安排将于近期奉上。献上我们最深的爱。`,
+    thankDecline: (name)=>`亲爱的 ${name}，感谢您拨冗回复。虽然当天无法相见，您的情谊始终与我们同在。献上我们最深的爱。`,
+
+    footerLine: "献上我们最深的爱 — 琦琦 & 罗伯特 · 2027",
+
+    errName: "请填写您的姓名。",
+    errMobile: "请输入正确的手机号码。",
+    errEmail: "请输入正确的电子邮箱。",
+    errCount: "请输入 1 至 10 之间的数字。",
+    errGuestName: "请输入这位宾客的姓名。",
+    errVenue: "请选择其中一个选项。",
+
+    admPwdTitle: "管理后台",
+    admPwdBody: "请输入密码以查看回复仪表板。",
+    btnEnter: "进入",
+    btnClose: "关闭",
+    admTitle: "回复仪表板",
+    btnExport: "导出 CSV",
+    btnClear: "清除全部",
+    admListTitle: "全部回复",
+    admKindTitle: "未能出席者的祝福",
+    statTotal: "回复总数",
+    statBali: "巴厘岛出席",
+    statSydney: "悉尼出席",
+    statDecline: "婉谢出席",
+    statHeadcount: (n)=>`共 ${n} 人`,
+    thName: "姓名", thMobile: "电话", thEmail: "邮箱", thCount: "人数",
+    thGuests: "同行", thVenue: "选择", thWhen: "提交时间", thLang: "语言",
+    tagBali: "巴厘岛", tagSydney: "悉尼", tagDecline: "婉谢",
+    pwdWrong: "密码不正确。",
+    confirmClear: "确定要删除所有回复吗？此操作无法复原。",
+    kindEmpty: "目前尚无留言。"
+  }
+};
+
+/* =========================================================
+   State
+   ========================================================= */
+const STORAGE_KEY = "wedding_rsvp_submissions_v1";
+const LANG_KEY = "wedding_rsvp_lang";
+const ADMIN_PASSWORD = "Wedding2027Admin";
+const RSVP_DEADLINE = new Date("2026-10-01T23:59:59+10:00"); // Sydney-ish local
+
+/* =========================================================
+   Supabase configuration
+   ---------------------------------------------------------
+   INSTRUCTIONS:
+   1. Create a free project at https://supabase.com
+   2. Go to Settings → API in your Supabase dashboard
+   3. Replace the two values below with your own:
+      - SUPABASE_URL  → your "Project URL"
+      - SUPABASE_KEY  → your "anon" (public) key
+   ========================================================= */
+const SUPABASE_URL = "https://wreuccnxketdgaqvhaaf.supabase.co";   // e.g. "https://abcdefgh.supabase.co"
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZXVjY254a2V0ZGdhcXZoYWFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwODgxMTYsImV4cCI6MjA5NjY2NDExNn0.4wCkYbl7D8aDK82MUcPaygTg72iUs-ciFwdTi09aXWs"; // e.g. "eyJhbGciOiJIUzI1NiIs..."
+const SUPABASE_TABLE = "rsvps";
+
+// Helper: make authenticated requests to Supabase REST API
+async function supaFetch(path, options = {}) {
+  if (!SUPABASE_URL || SUPABASE_URL.startsWith("YOUR_")) return null; // not configured
+  const url = `${SUPABASE_URL}/rest/v1/${path}`;
+  const headers = {
+    "apikey": SUPABASE_KEY,
+    "Authorization": `Bearer ${SUPABASE_KEY}`,
+    "Content-Type": "application/json",
+    "Prefer": options.prefer || "return=minimal",
+    ...options.headers
+  };
+  try {
+    const res = await fetch(url, { ...options, headers });
+    if (!res.ok) { console.warn("Supabase error:", res.status, await res.text()); return null; }
+    if (options.prefer === "return=representation" || options.method === "GET" || !options.method) {
+      const text = await res.text();
+      return text ? JSON.parse(text) : [];
+    }
+    return true;
+  } catch (err) {
+    console.warn("Supabase network error:", err);
+    return null;
+  }
+}
+
+let currentLang = (function(){
+  const saved = localStorage.getItem(LANG_KEY);
+  if (saved === "en" || saved === "zh-Hans") return saved;
+  const nav = (navigator.language || "en").toLowerCase();
+  return nav.startsWith("zh") ? "zh-Hans" : "en";
+})();
+
+let formData = {
+  fullName: "", mobile: "", email: "",
+  guestCount: 1, guestNames: [],
+  venue: "", declineMsg: ""
+};
+
+/* =========================================================
+   i18n apply
+   ========================================================= */
+function t(key){ return I18N[currentLang][key]; }
+
+function applyLang(){
+  document.documentElement.lang = currentLang === "zh-Hans" ? "zh-Hans" : "en";
+  document.getElementById("lang-en").classList.toggle("active", currentLang === "en");
+  document.getElementById("lang-zh").classList.toggle("active", currentLang === "zh-Hans");
+  document.getElementById("lang-en").setAttribute("aria-selected", currentLang === "en");
+  document.getElementById("lang-zh").setAttribute("aria-selected", currentLang === "zh-Hans");
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    const val = I18N[currentLang][key];
+    if (typeof val === "string") {
+      el.innerHTML = val;
+    }
+  });
+
+  // placeholders
+  const declineMsg = document.getElementById("declineMsg");
+  if (declineMsg) declineMsg.placeholder = I18N[currentLang].wishPlaceholder;
+
+  // re-render dynamic things
+  updateCountdown();
+  refreshGuestRowsLabels();
+  // if admin open, refresh
+  if (document.getElementById("admModalBack").classList.contains("open")) renderAdmin();  // async, fire-and-forget is fine here
+}
+
+/* =========================================================
+   Countdown
+   ========================================================= */
+function updateCountdown(){
+  const now = new Date();
+  let diff = RSVP_DEADLINE - now;
+  const els = {
+    d: document.getElementById("cd-days"),
+    h: document.getElementById("cd-hours"),
+    m: document.getElementById("cd-mins"),
+    s: document.getElementById("cd-secs"),
+  };
+  if (!els.d) return;
+  if (diff <= 0){
+    els.d.textContent = "0"; els.h.textContent = "0"; els.m.textContent = "0"; els.s.textContent = "0";
+    return;
+  }
+  const d = Math.floor(diff/86400000); diff -= d*86400000;
+  const h = Math.floor(diff/3600000); diff -= h*3600000;
+  const m = Math.floor(diff/60000); diff -= m*60000;
+  const s = Math.floor(diff/1000);
+  els.d.textContent = d;
+  els.h.textContent = String(h).padStart(2,"0");
+  els.m.textContent = String(m).padStart(2,"0");
+  els.s.textContent = String(s).padStart(2,"0");
+}
+setInterval(updateCountdown, 1000);
+
+/* =========================================================
+   Step navigation
+   ========================================================= */
+function goStep(n){
+  document.querySelectorAll(".page-step").forEach(el=>el.classList.remove("active"));
+  document.getElementById("step-page-"+n).classList.add("active");
+  // step indicators
+  for (let i=1;i<=3;i++){
+    const s = document.getElementById("step-"+i);
+    s.classList.toggle("active", i===n);
+    s.classList.toggle("done", i<n);
+  }
+  // scroll up to top of page card on mobile
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* =========================================================
+   Dynamic guest rows
+   ========================================================= */
+function refreshGuestRowsLabels(){
+  document.querySelectorAll("#guestRows .guest-row input").forEach((inp,i)=>{
+    inp.placeholder = currentLang === "zh-Hans"
+      ? `第 ${i+2} 位宾客 · 姓名`
+      : `Guest ${i+2} · full name`;
+  });
+}
+function renderGuestRows(){
+  const count = Math.max(1, Math.min(10, parseInt(document.getElementById("guestCount").value || "1", 10)));
+  const extra = count - 1;
+  const wrap = document.getElementById("guestList");
+  const rows = document.getElementById("guestRows");
+  if (extra <= 0){
+    wrap.hidden = true;
+    rows.innerHTML = "";
+    formData.guestNames = [];
+    return;
+  }
+  wrap.hidden = false;
+  // preserve existing values
+  const existing = Array.from(rows.querySelectorAll("input")).map(i=>i.value);
+  rows.innerHTML = "";
+  for (let i=0;i<extra;i++){
+    const row = document.createElement("div");
+    row.className = "guest-row";
+    row.innerHTML = `
+      <div class="idx">${i+2}</div>
+      <input type="text" data-guest-index="${i}" value="${existing[i] ? escapeAttr(existing[i]) : ""}" />
+    `;
+    rows.appendChild(row);
+  }
+  refreshGuestRowsLabels();
+}
+function escapeAttr(s){ return String(s).replace(/[&<>"']/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c])); }
+function escapeHtml(s){ return escapeAttr(s); }
+
+/* =========================================================
+   Validation
+   ========================================================= */
+function setErr(fieldName, msg){
+  const wrap = document.querySelector(`.field[data-name="${fieldName}"]`);
+  if (!wrap) return;
+  wrap.classList.toggle("invalid", !!msg);
+  const errEl = wrap.querySelector("[data-err]");
+  if (errEl) errEl.textContent = msg || "";
+}
+function clearAllErr(){
+  document.querySelectorAll(".field").forEach(f=>{
+    f.classList.remove("invalid");
+    const e = f.querySelector("[data-err]"); if(e) e.textContent="";
+  });
+  document.querySelector("[data-err-venue]").textContent = "";
+}
+function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function validMobile(v){
+  const digits = (v||"").replace(/[^\d]/g,"");
+  return digits.length >= 6 && digits.length <= 16;
+}
+
+/* =========================================================
+   Step 1 submit
+   ========================================================= */
+document.getElementById("form-1").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  clearAllErr();
+  const name = document.getElementById("fullName").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const count = parseInt(document.getElementById("guestCount").value || "0", 10);
+  let ok = true;
+  if (!name){ setErr("fullName", t("errName")); ok=false; }
+  if (!validMobile(mobile)){ setErr("mobile", t("errMobile")); ok=false; }
+  if (!validEmail(email)){ setErr("email", t("errEmail")); ok=false; }
+  if (!(count>=1 && count<=10)){ setErr("guestCount", t("errCount")); ok=false; }
+
+  // additional guest names
+  const guestNames = [];
+  if (count > 1){
+    const inputs = document.querySelectorAll("#guestRows input");
+    inputs.forEach((inp, idx)=>{
+      const v = inp.value.trim();
+      guestNames.push(v);
+      if (!v){
+        inp.style.borderBottomColor = "var(--error)";
+        ok = false;
+      } else {
+        inp.style.borderBottomColor = "";
+      }
+    });
+    if (guestNames.some(g=>!g)){
+      // show a single inline error under guest count
+      setErr("guestCount", t("errGuestName"));
+    }
+  }
+  if (!ok) return;
+
+  formData.fullName = name;
+  formData.mobile = mobile;
+  formData.email = email;
+  formData.guestCount = count;
+  formData.guestNames = guestNames;
+  goStep(2);
+});
+
+document.getElementById("guestCount").addEventListener("input", renderGuestRows);
+document.getElementById("back-1").addEventListener("click", ()=>goStep(1));
+
+/* =========================================================
+   Step 2: venue selection visual + submit
+   ========================================================= */
+const venueLabels = document.querySelectorAll(".event");
+venueLabels.forEach(label=>{
+  label.addEventListener("click", ()=>{
+    venueLabels.forEach(l=>l.classList.remove("selected"));
+    label.classList.add("selected");
+    const input = label.querySelector("input[type=radio]");
+    input.checked = true;
+    document.querySelector("[data-err-venue]").textContent = "";
+    const isDecline = input.value === "decline";
+    document.getElementById("declineMsgField").hidden = !isDecline;
+  });
+});
+
+document.getElementById("form-2").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  const venue = document.querySelector("input[name=venue]:checked");
+  if (!venue){
+    document.querySelector("[data-err-venue]").textContent = t("errVenue");
+    return;
+  }
+  formData.venue = venue.value;
+  formData.declineMsg = (document.getElementById("declineMsg").value || "").trim();
+  saveSubmission();
+  showConfirmation();
+  goStep(3);
+});
+
+/* =========================================================
+   Save to localStorage + Supabase
+   ========================================================= */
+function loadAllLocal(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch(e){ return []; }
+}
+function saveAllLocal(arr){ localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+
+// Load from Supabase (remote) — returns array or null if unavailable
+async function loadAllRemote(){
+  const data = await supaFetch(`${SUPABASE_TABLE}?select=*&order=created_at.desc`, { method: "GET" });
+  if (!data) return null;
+  // Map Supabase columns to the same shape used locally
+  return data.map(r => ({
+    ts: r.created_at || r.ts,
+    name: r.full_name || r.name || "",
+    mobile: r.mobile || "",
+    email: r.email || "",
+    guestCount: r.guest_count || 1,
+    guestNames: r.guest_names || [],
+    venue: r.venue || "",
+    message: r.message || "",
+    lang: r.lang || "en"
+  }));
+}
+
+// Unified loader: prefer Supabase, fall back to localStorage
+async function loadAll(){
+  const remote = await loadAllRemote();
+  if (remote !== null) return remote;
+  return loadAllLocal();
+}
+
+// Synchronous version for non-async contexts (uses localStorage only)
+function loadAllSync(){
+  return loadAllLocal();
+}
+
+function saveSubmission(){
+  const record = {
+    ts: new Date().toISOString(),
+    name: formData.fullName,
+    mobile: formData.mobile,
+    email: formData.email,
+    guestCount: formData.guestCount,
+    guestNames: formData.guestNames.slice(),
+    venue: formData.venue,                    // bali | sydney | decline
+    message: formData.venue === "decline" ? formData.declineMsg : "",
+    lang: currentLang
+  };
+  // Always save locally as backup
+  const all = loadAllLocal();
+  all.push(record);
+  saveAllLocal(all);
+
+  // Also push to Supabase (fire-and-forget, non-blocking)
+  supaFetch(SUPABASE_TABLE, {
+    method: "POST",
+    body: JSON.stringify({
+      full_name: record.name,
+      mobile: record.mobile,
+      email: record.email,
+      guest_count: record.guestCount,
+      guest_names: record.guestNames,
+      venue: record.venue,
+      message: record.message,
+      lang: record.lang
+    })
+  });
+}
+
+/* =========================================================
+   Confirmation
+   ========================================================= */
+function showConfirmation(){
+  const name = formData.fullName;
+  let body = "";
+  if (formData.venue === "bali") body = I18N[currentLang].thankBali(name);
+  else if (formData.venue === "sydney") body = I18N[currentLang].thankSydney(name);
+  else body = I18N[currentLang].thankDecline(name);
+  document.getElementById("thankBody").textContent = body;
+  const kind = document.getElementById("thankKind");
+  if (formData.venue === "decline" && formData.declineMsg){
+    kind.hidden = false;
+    kind.textContent = "“" + formData.declineMsg + "”";
+  } else {
+    kind.hidden = true; kind.textContent = "";
+  }
+}
+
+document.getElementById("restart").addEventListener("click", ()=>{
+  // reset
+  formData = { fullName:"", mobile:"", email:"", guestCount:1, guestNames:[], venue:"", declineMsg:"" };
+  document.getElementById("form-1").reset();
+  document.getElementById("form-2").reset();
+  document.getElementById("guestCount").value = "1";
+  renderGuestRows();
+  venueLabels.forEach(l=>l.classList.remove("selected"));
+  document.getElementById("declineMsgField").hidden = true;
+  clearAllErr();
+  goStep(1);
+});
+
+/* =========================================================
+   Language toggle
+   ========================================================= */
+document.getElementById("lang-en").addEventListener("click", ()=>{
+  currentLang = "en"; localStorage.setItem(LANG_KEY, currentLang); applyLang();
+});
+document.getElementById("lang-zh").addEventListener("click", ()=>{
+  currentLang = "zh-Hans"; localStorage.setItem(LANG_KEY, currentLang); applyLang();
+});
+
+/* =========================================================
+   Hidden admin trigger (5 taps on monogram within 2.5s)
+   ========================================================= */
+(function adminTrigger(){
+  const el = document.getElementById("adminTrigger");
+  let taps = []; const WINDOW_MS = 2500; const NEED = 5;
+  el.addEventListener("click", ()=>{
+    const now = Date.now();
+    taps = taps.filter(t=> now - t < WINDOW_MS);
+    taps.push(now);
+    if (taps.length >= NEED){
+      taps = [];
+      openPwdModal();
+    }
+  });
+})();
+
+function openPwdModal(){
+  document.getElementById("pwdErr").textContent = "";
+  document.getElementById("pwdInput").value = "";
+  document.getElementById("pwdModalBack").classList.add("open");
+  setTimeout(()=>document.getElementById("pwdInput").focus(), 50);
+}
+function closePwdModal(){ document.getElementById("pwdModalBack").classList.remove("open"); }
+document.getElementById("pwdClose").addEventListener("click", closePwdModal);
+document.getElementById("pwdModalBack").addEventListener("click", (e)=>{
+  if (e.target.id === "pwdModalBack") closePwdModal();
+});
+document.getElementById("pwdForm").addEventListener("submit", (e)=>{
+  e.preventDefault();
+  const v = document.getElementById("pwdInput").value;
+  if (v === ADMIN_PASSWORD){
+    closePwdModal();
+    openAdmin();
+  } else {
+    document.getElementById("pwdErr").textContent = t("pwdWrong");
+  }
+});
+
+/* =========================================================
+   Admin dashboard
+   ========================================================= */
+async function openAdmin(){
+  document.getElementById("admModalBack").classList.add("open");
+  // Show loading state briefly
+  document.getElementById("admStats").innerHTML = '<div class="stat"><div class="stat-label">Loading...</div></div>';
+  await renderAdmin();
+}
+function closeAdmin(){ document.getElementById("admModalBack").classList.remove("open"); }
+document.getElementById("admClose").addEventListener("click", closeAdmin);
+document.getElementById("admModalBack").addEventListener("click", (e)=>{
+  if (e.target.id === "admModalBack") closeAdmin();
+});
+
+async function renderAdmin(){
+  const all = await loadAll();
+  const total = all.length;
+  const bali = all.filter(r=>r.venue==="bali");
+  const syd  = all.filter(r=>r.venue==="sydney");
+  const dec  = all.filter(r=>r.venue==="decline");
+  const head = (arr)=> arr.reduce((s,r)=> s + (parseInt(r.guestCount||1,10)||1), 0);
+
+  const stats = [
+    { label: t("statTotal"),  value: total,         sub: t("statHeadcount")(head(all)) },
+    { label: t("statBali"),   value: bali.length,   sub: t("statHeadcount")(head(bali)) },
+    { label: t("statSydney"), value: syd.length,    sub: t("statHeadcount")(head(syd)) },
+    { label: t("statDecline"),value: dec.length,    sub: "" },
+  ];
+  const statsHtml = stats.map(s=>`
+    <div class="stat">
+      <div class="stat-label">${escapeHtml(s.label)}</div>
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-sub">${escapeHtml(s.sub)}</div>
+    </div>
+  `).join("");
+  document.getElementById("admStats").innerHTML = statsHtml;
+
+  // table
+  const fmt = (iso)=>{
+    try{
+      const d = new Date(iso);
+      const pad=(n)=>String(n).padStart(2,"0");
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }catch(e){ return iso; }
+  };
+  const tagFor = (v)=>{
+    if (v==="bali") return `<span class="tag bali">${t("tagBali")}</span>`;
+    if (v==="sydney") return `<span class="tag sydney">${t("tagSydney")}</span>`;
+    return `<span class="tag decline">${t("tagDecline")}</span>`;
+  };
+  const sorted = all.slice().sort((a,b)=> (b.ts||"").localeCompare(a.ts||""));
+  const rows = sorted.map(r=>`
+    <tr>
+      <td>${escapeHtml(r.name||"")}</td>
+      <td>${escapeHtml(r.mobile||"")}</td>
+      <td>${escapeHtml(r.email||"")}</td>
+      <td>${r.guestCount||1}</td>
+      <td>${escapeHtml((r.guestNames||[]).join(", "))}</td>
+      <td>${tagFor(r.venue)}</td>
+      <td>${escapeHtml(fmt(r.ts))}</td>
+      <td>${escapeHtml(r.lang||"")}</td>
+    </tr>
+  `).join("");
+  document.querySelector("#admTable tbody").innerHTML = rows || `<tr><td colspan="8" style="color:var(--ink-soft);font-style:italic;padding:14px 8px;">—</td></tr>`;
+
+  // kind words
+  const kindList = document.getElementById("admKind");
+  const kinds = dec.filter(r=> (r.message||"").trim());
+  if (!kinds.length){
+    kindList.innerHTML = `<div class="kind-card"><div class="msg">${escapeHtml(t("kindEmpty"))}</div></div>`;
+  } else {
+    kindList.innerHTML = kinds.map(r=>`
+      <div class="kind-card">
+        <div class="who">${escapeHtml(r.name||"")} · ${escapeHtml(fmt(r.ts))}</div>
+        <div class="msg">“${escapeHtml(r.message)}”</div>
+      </div>
+    `).join("");
+  }
+}
+
+/* CSV export */
+function toCsv(rows){
+  const headers = ["timestamp","name","mobile","email","guest_count","guest_names","venue","message","language"];
+  const esc = (v)=>{
+    if (v == null) return "";
+    const s = String(v).replace(/"/g,'""');
+    return /[",\n]/.test(s) ? `"${s}"` : s;
+  };
+  const lines = [headers.join(",")];
+  rows.forEach(r=>{
+    lines.push([
+      r.ts, r.name, r.mobile, r.email, r.guestCount,
+      (r.guestNames||[]).join(" | "), r.venue, r.message, r.lang
+    ].map(esc).join(","));
+  });
+  return "\ufeff" + lines.join("\n"); // BOM for Excel CJK
+}
+document.getElementById("exportCsv").addEventListener("click", async ()=>{
+  const all = await loadAll();
+  const csv = toCsv(all);
+  const blob = new Blob([csv], { type:"text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  const today = new Date().toISOString().slice(0,10);
+  a.download = `wedding-rsvp-${today}.csv`;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 0);
+});
+
+document.getElementById("clearAll").addEventListener("click", async ()=>{
+  if (confirm(t("confirmClear"))){
+    localStorage.removeItem(STORAGE_KEY);
+    // Also delete all rows from Supabase
+    await supaFetch(`${SUPABASE_TABLE}?id=gt.0`, { method: "DELETE" });
+    await renderAdmin();
+  }
+});
+
+/* =========================================================
+   Boot
+   ========================================================= */
+applyLang();
+renderGuestRows();
+updateCountdown();
+</script>
+</body>
+</html>
